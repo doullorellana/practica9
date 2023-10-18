@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Nav from "./components/Nav/Nav";
 import "./App.css";
 
 function App() {
@@ -15,19 +16,22 @@ function App() {
   }, []);
 
   return (
-    <main>
-      {data.map((el) => (
-        <div key={el.id} className="card">
-          <div className="divImg">
-            <img src={el.image} alt={el.name} />
+    <>
+      <Nav />
+      <main>
+        {data.map((el) => (
+          <div key={el.id} className="card">
+            <div className="divImg">
+              <img src={el.image} alt={el.name} />
+            </div>
+            <div className="divText">
+              <h3>{el.name}</h3>
+              <p>Especie: {el.species}</p>
+            </div>
           </div>
-          <div className="divText">
-            <h2>{el.name}</h2>
-            <p>Especie: {el.species}</p>
-          </div>
-        </div>
-      ))}
-    </main>
+        ))}
+      </main>
+    </>
   );
 }
 

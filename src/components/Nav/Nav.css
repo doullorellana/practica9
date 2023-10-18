@@ -1,0 +1,29 @@
+header {
+    height: 70px;
+}
+
+nav {
+    height: 100%;
+}
+
+#formNav {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#formNav > input {
+    height: 50%;
+    font-size: 1.2rem;
+}
+
+#formNav > button {
+    font-family: 1.2rem;
+    background-color: tomato;
+    border: 0;
+    color: white;
+    padding: 7px 20px;
+    border: 10px;
+}

@@ -8,7 +8,8 @@
 #root{
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 main{
@@ -18,6 +19,7 @@ main{
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    gap: 1rem;
 }
 
 .card {
@@ -47,4 +49,8 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.divText > h3 {
+    text-align: center;
 }
