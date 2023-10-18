@@ -1,10 +1,10 @@
 import "./Nav.css";
 
-function Nav() {
+function Nav( {fnSubmit} ) {
   return (
     <header>
       <nav>
-        <form id="formNav">
+        <form id="formNav" onSubmit={fnSubmit}>
           <input type="text"/>
           <button type="submit">Buscar</button>
         </form>

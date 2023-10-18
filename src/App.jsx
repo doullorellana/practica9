@@ -1,34 +1,45 @@
 import { useEffect, useState } from "react";
 import Nav from "./components/Nav/Nav";
+import Card from "./components/Card/Card";
 import "./App.css";
 
 function App() {
   const URL = "https://rickandmortyapi.com/api/character";
   const [data, setData] = useState([]);
+  const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
     fetch(URL)
       .then((res) => res.json())
       .then((datos) => {
         setData(datos.results);
-        console.log(datos.results);
+        setFiltered(datos.results);
+        //console.log(datos.results);
       });
   }, []);
 
+  const filterData = (text) => {
+    const dataFiltered = data.filter((element) =>
+      element.name.toLowerCase().includes(text.toLowerCase())
+    );
+
+    return dataFiltered;
+  };
+
+  const handleFilter = (e) => {
+    e.preventDefault();
+    const text = e.target[0].value;
+    const resultFiltered = filterData(text);
+    //setData(filtered);
+    setFiltered(resultFiltered);
+  };
+
   return (
     <>
-      <Nav />
+      <Nav fnSubmit={handleFilter} />
       <main>
-        {data.map((el) => (
-          <div key={el.id} className="card">
-            <div className="divImg">
-              <img src={el.image} alt={el.name} />
-            </div>
-            <div className="divText">
-              <h3>{el.name}</h3>
-              <p>Especie: {el.species}</p>
-            </div>
-          </div>
+        {filtered.map((el) => (
+          <Card ele={el}/>
         ))}
       </main>
     </>
